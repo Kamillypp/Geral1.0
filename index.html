@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Perguntas Gerais</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+    }
+    #question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .option {
+      display: inline-block;
+      margin: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jogo de Perguntas Gerais</h1>
+    <div id="question"></div>
+    <div id="options"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "Qual é a capital do Brasil?",
+        options: ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"],
+        answer: "Brasília"
+      },
+      {
+        question: "Quem escreveu 'Dom Quixote'?",
+        options: ["Miguel de Cervantes", "William Shakespeare", "Friedrich Nietzsche", "Charles Dickens"],
+        answer: "Miguel de Cervantes"
+      },
+      {
+        question: "Qual é o símbolo químico do ouro?",
+        options: ["O", "Au", "Ag", "Fe"],
+        answer: "Au"
+      },
+      {
+        question: "Quem pintou a Mona Lisa?",
+        options: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
+        answer: "Leonardo da Vinci"
+      },
+      {
+        question: "Qual é o maior planeta do sistema solar?",
+        options: ["Júpiter", "Saturno", "Terra", "Marte"],
+        answer: "Júpiter"
+      },
+      {
+        question: "Qual é o animal terrestre mais rápido?",
+        options: ["Leopardo", "Guepardo", "Lobo", "Leão"],
+        answer: "Guepardo"
+      },
+      {
+        question: "Quem é o autor de 'A Metamorfose'?",
+        options: ["Franz Kafka", "Fyodor Dostoevsky", "Leo Tolstoy", "Ernest Hemingway"],
+        answer: "Franz Kafka"
+      },
+      {
+        question: "Qual é o rio mais longo do mundo?",
+        options: ["Amazonas", "Nilo", "Yangtzé", "Mississippi"],
+        answer: "Nilo"
+      },
+      {
+        question: "Quem foi o primeiro homem a pisar na Lua?",
+        options: ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Alan Shepard"],
+        answer: "Neil Armstrong"
+      },
+      {
+        question: "Qual é o elemento químico mais abundante no universo?",
+        options: ["Hidrogênio", "Oxigênio", "Carbono", "Helio"],
+        answer: "Hidrogênio"
+      },
+      {
+        question: "Qual é o nome do osso mais longo do corpo humano?",
+        options: ["Fêmur", "Tíbia", "Rádio", "Úmero"],
+        answer: "Fêmur"
+      },
+      {
+        question: "Qual é o principal órgão responsável pela digestão no corpo humano?",
+        options: ["Estômago", "Fígado", "Intestino delgado", "Pâncreas"],
+        answer: "Intestino delgado"
+      },
+      {
+        question: "Qual é o ingrediente principal do prato italiano 'risoto'?",
+        options: ["Macarrão", "Arroz", "Batata", "Feijão"],
+        answer: "Arroz"
+      },
+      {
+        question: "Em que país originou-se o sushi?",
+        options: ["Japão", "China", "Coreia do Sul", "Tailândia"],
+        answer: "Japão"
+      },
+      {
+        question: "Qual é a fruta que é conhecida como 'a rainha das frutas'?",
+        options: ["Banana", "Maçã", "Manga", "Abacaxi"],
+        answer: "Manga"
+      },
+      {
+        question: "Qual é o mineral que é conhecido como 'vitamina do sol'?",
+        options: ["Cálcio", "Ferro", "Zinco", "Vitamina D"],
+        answer: "Vitamina D"
+      },
+      {
+        question: "Qual é o principal ingrediente do prato mexicano 'guacamole'?",
+        options: ["Abacate", "Tomate", "Cebola", "Pimentão"],
+        answer: "Abacate"
+      },
+      {
+        question: "Qual é o órgão que é considerado o maior do corpo humano?",
+        options: ["Fígado", "Coração", "Pele", "Cérebro"],
+        answer: "Pele"
+      },
+      {
+        question: "Qual é o alimento que é conhecido como 'ouro negro'?",
+        options: ["Chocolate", "Café", "Açaí", "Trufa"],
+        answer: "Chocolate"
+      },
+      {
+        question: "Qual é o nome do processo químico pelo qual as plantas produzem alimentos?",
+        options: ["Fotossíntese", "Respiração", "Digestão", "Fermentação"],
+        answer: "Fotossíntese"
+      },
+      // Novas perguntas adicionadas
+      {
+        question: "Qual é o nome da maior cordilheira do mundo?",
+        options: ["Andes", "Himalaias", "Montanhas Rochosas", "Cordilheira dos Andes"],
+        answer: "Cordilheira dos Andes"
+      },
+      {
+        question: "Quem é conhecido como 'o pai da informática'?",
+        options: ["Alan Turing", "Bill Gates", "Steve Jobs", "Tim Berners-Lee"],
+        answer: "Alan Turing"
+      },
+      {
+        question: "Qual é o maior oceano do mundo?",
+        options: ["Pacífico", "Atlântico ", "Índico", "Ártico"], answer: "Pacífico" }, { question: "Qual é o maior deserto do mundo?", options: ["Saara", "Gobi", "Antártico", "Kalahari"], answer: "Antártico" }, { question: "Quem é o autor de 'O Pequeno Príncipe'?", options: ["Antoine de Saint-Exupéry", "J.K. Rowling", "Herman Hesse", "Mark Twain"], answer: "Antoine de Saint-Exupéry" }, { question: "Qual é a capital da Austrália?", options: ["Sydney", "Melbourne", "Canberra", "Perth"], answer: "Canberra" }, { question: "Qual é o país com a maior população do mundo?", options: ["Índia", "Estados Unidos", "China", "Brasil"], answer: "China" }, { question: "Quem pintou 'O Grito'?", options: ["Edvard Munch", "Pablo Picasso", "Vincent van Gogh", "Claude Monet"], answer: "Edvard Munch" }, { question: "Qual é o nome do cientista que formulou a Teoria da Relatividade?", options: ["Albert Einstein", "Isaac Newton", "Galileu Galilei", "Stephen Hawking"], answer: "Albert Einstein" }, { question: "Qual é o ponto mais alto da Terra?", options: ["Monte Everest", "Monte Kilimanjaro", "Monte McKinley", "Monte Fuji"], answer: "Monte Everest" }, { question: "Quem escreveu 'Crime e Castigo'?", options: ["Fyodor Dostoevsky", "Leo Tolstoy", "Franz Kafka", "George Orwell"], answer: "Fyodor Dostoevsky" }, { question: "Qual é o país mais extenso do mundo em área territorial?", options: ["Rússia", "Canadá", "Estados Unidos", "China"], answer: "Rússia" }, { question: "Quem foi o primeiro presidente dos Estados Unidos?", options: ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams"], answer: "George Washington" }, { question: "Qual é o nome da famosa pirâmide localizada no Egito?", options: ["Pirâmide de Quéops", "Pirâmide de Quéfren", "Pirâmide de Miquerinos", "Pirâmide de Tutancâmon"], answer: "Pirâmide de Quéops" }, { question: "Qual é a obra mais famosa de William Shakespeare?", options: ["Romeu e Julieta", "Hamlet", "Macbeth", "Otelo"], answer: "Hamlet" }, { question: "Qual é o nome da estrela mais próxima da Terra, além do Sol?", options: ["Próxima Centauri", "Alfa Centauri", "Sirius", "Vega"], answer: "Alfa Centauri" }, { question: "Qual é o país conhecido como 'país do sol nascente'?", options: ["Japão", "China", "Índia", "Austrália"], answer: "Japão" }, { question: "Quem é o autor da obra 'O Guia do Mochileiro das Galáxias'?", options: ["Douglas Adams", "J.R.R. Tolkien", "George Orwell", "Philip K. Dick"], answer: "Douglas Adams" }, { question: "Qual é o maior órgão do corpo humano?", options: ["Pele", "Fígado", "Coração", "Cérebro"], answer: "Pele" } ];let remainingQuestions = questions.slice(); // Create a copy of all questions
+
+function displayQuestion() {
+  if (remainingQuestions.length === 0) {
+    remainingQuestions = questions.slice(); // If all questions have been asked, reset the list
+  }
+  
+  const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+  const question = remainingQuestions[randomIndex];
+
+  const questionElement = document.getElementById('question');
+  const optionsElement = document.getElementById('options');
+  const resultElement = document.getElementById('result');
+
+  questionElement.textContent = question.question;
+  optionsElement.innerHTML = '';
+  resultElement.textContent = '';
+
+  question.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.classList.add('option');
+    button.onclick = () => checkAnswer(option, question.answer);
+    optionsElement.appendChild(button);
+  });
+
+  remainingQuestions.splice(randomIndex, 1); // Remove the displayed question from the list
+}
+
+function checkAnswer(selectedOption, correctAnswer) {
+  const resultElement = document.getElementById('result');
+
+  if (selectedOption === correctAnswer) {
+    resultElement.textContent = 'Resposta correta!';
+  } else {
+    resultElement.textContent = 'Resposta incorreta!';
+  }
+  
+  setTimeout(displayQuestion, 2000); // Display the next question after 2 seconds
+}
+
+displayQuestion();
+  </script>
+</body>
+</html>
